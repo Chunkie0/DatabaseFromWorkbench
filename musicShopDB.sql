@@ -33,7 +33,7 @@ create table media_types(
 
 create table tracks(
 	TrackId integer primary key auto_increment not null,
-    Name nvarchar(120),
+    Name nvarchar(200),
     AlbumId integer,
     MediaTypeId integer not null,
     GenreId integer,
@@ -74,6 +74,20 @@ create table employees(
 );
 
 create index IFK_EmployeeReportsTo on employees (ReportsTo);
+
+create table users(
+	UserId integer primary key auto_increment not null,
+    EmployeeId integer null,
+    User_name nvarchar(20) not null,
+    User_password nvarchar(64),
+    `User` boolean null,
+    `Manager` boolean null,
+    `Admin` boolean null,
+	foreign key (EmployeeId) references employees (EmployeeId)
+		on delete no action on update no action
+);
+
+create index IFK_UserEmployeeId on employees (EmployeeId);
 
 create table customers(
 	CustomerId integer primary key auto_increment not null,

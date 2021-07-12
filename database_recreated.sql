@@ -89,7 +89,7 @@ create table users(
 
 create index IFK_UserEmployeeId on employees (EmployeeId);
 
-create table customers(
+create table customers( 
 	CustomerId integer primary key auto_increment not null,
     FirstName nvarchar(40) not null,
     LastName nvarchar(20) not null,
